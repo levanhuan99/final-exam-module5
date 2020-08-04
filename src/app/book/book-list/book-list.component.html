@@ -1,0 +1,26 @@
+<button class="btn btn-primary" routerLink="add">Add a new book</button>
+<div class="alert alert-primary" role="alert">
+ There are {{numberOfBook}} books
+</div>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">title</th>
+    <th scope="col">author</th>
+    <th colspan="2">action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let book of books; let i = index">
+    <th scope="row">{{i+1}}</th>
+    <td ><a [routerLink]="[book.id,'bookDetail']" >{{book.title}}</a></td>
+    <td>{{book.author}}</td>
+    <td>
+      <button class="btn btn-primary" [routerLink]="[book.id, 'editDetail']">edit</button>
+      <button class="btn btn-danger" (click)="deleteBook(book.id)">delete</button>
+    </td>
+  </tr>
+
+  </tbody>
+</table>
